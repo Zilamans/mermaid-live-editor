@@ -1,0 +1,57 @@
+graph TD
+    subgraph Data Center 1
+        A1[Load Balancer<br>HAProxy 2.4]
+        B1[Node 1<br>Ubuntu 20.04 LTS, KVM 4.4, Kubernetes 1.23, Docker 20.10, Ceph 16.2]
+        C1[Node 2<br>Ubuntu 20.04 LTS, KVM 4.4, Kubernetes 1.23, Docker 20.10, Ceph 16.2]
+        D1[Ceph Monitor<br>Ceph 16.2]
+        E1[Bareos Backup Server<br>Bareos 20.0]
+        F1[ELK Stack<br>Elasticsearch 7.17, Logstash 7.17, Kibana 7.17]
+
+        A1 --> B1 & C1
+        B1 & C1 --> D1
+        D1 --> E1 & F1
+    end
+
+    subgraph Data Center 2
+        A2[Load Balancer<br>HAProxy 2.4]
+        B2[Node 3<br>Ubuntu 20.04 LTS, KVM 4.4, Kubernetes 1.23, Docker 20.10, Ceph 16.2]
+        C2[Node 4<br>Ubuntu 20.04 LTS, KVM 4.4, Kubernetes 1.23, Docker 20.10, Ceph 16.2]
+        D2[Ceph Monitor<br>Ceph 16.2]
+        E2[Bareos Backup Server<br>Bareos 20.0]
+        F2[ELK Stack<br>Elasticsearch 7.17, Logstash 7.17, Kibana 7.17]
+
+        A2 --> B2 & C2
+        B2 & C2 --> D2
+        D2 --> E2 & F2
+    end
+
+    subgraph Data Center 3
+        A3[Load Balancer<br>HAProxy 2.4]
+        B3[Node 5<br>Ubuntu 20.04 LTS, KVM 4.4, Kubernetes 1.23, Docker 20.10, Ceph 16.2]
+        C3[Node 6<br>Ubuntu 20.04 LTS, KVM 4.4, Kubernetes 1.23, Docker 20.10, Ceph 16.2]
+        D3[Ceph Monitor<br>Ceph 16.2]
+        E3[Bareos Backup Server<br>Bareos 20.0]
+        F3[ELK Stack<br>Elasticsearch 7.17, Logstash 7.17, Kibana 7.17]
+
+        A3 --> B3 & C3
+        B3 & C3 --> D3
+        D3 --> E3 & F3
+    end
+
+    subgraph Data Center 4
+        A4[Load Balancer<br>HAProxy 2.4]
+        B4[Node 7<br>Ubuntu 20.04 LTS, KVM 4.4, Kubernetes 1.23, Docker 20.10, Ceph 16.2]
+        C4[Node 8<br>Ubuntu 20.04 LTS, KVM 4.4, Kubernetes 1.23, Docker 20.10, Ceph 16.2]
+        D4[Ceph Monitor<br>Ceph 16.2]
+        E4[Bareos Backup Server<br>Bareos 20.0]
+        F4[ELK Stack<br>Elasticsearch 7.17, Logstash 7.17, Kibana 7.17]
+
+        A4 --> B4 & C4
+        B4 & C4 --> D4
+        D4 --> E4 & F4
+    end
+
+    G[DRBD 9.0/Resilio Connect 2.7] --> Data Center 1 & Data Center 2 & Data Center 3 & Data Center 4
+
+    classDef site fill:#f9f,stroke:#333,stroke-width:2px
+    class Data Center 1,Data Center 2,Data Center 3,Data Center 4 site
